@@ -1,0 +1,35 @@
+Instalación Solr con Docker
+
+Pre-requisitos:
+- Docker
+sudo apt install docker.io
+sudo systemctl enable --now docker
+
+- Docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+docker-compose --version
+
+- Descargar files
+https://drive.google.com/drive/folders/1LRgLcaIIHHnMWDP_uq78vRJ_7AIVz0vU?usp=sharing
+
+- ingresar carpeta solr
+. por terminal ejecutar script instalación:
+	* bash ./solr.sh
+. UI de Solr: ingresar http://localhost:8983
+. Core Admin: crear nuevo core
+	* name: filmscore
+	* instanceDir: mycores/filmscore
+	* schema: managed-schema
+. por terminal cargar datos: 
+	* bash ./solr_chargeData.sh movie_metadata.csv
+. UI de solr:
+	seleccionar filmscore -> Query: realizar búsquedas indexadas (Execute Query)
+	
+- Detener contenedor
+. docker-compose stop
+
+
+
+
